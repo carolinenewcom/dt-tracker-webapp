@@ -3,9 +3,11 @@
 {% block content %}
 
 
-
-
-
+<form action="{% url 'search-caseload' %}" method=POST>
+    {% csrf_token %}
+    <input type="text" name="searched" placeholder="Search Caseload">
+    <button class="btn" type="submit">Search</button>
+</form>
 
 
 {% endblock %}
