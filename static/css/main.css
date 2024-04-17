@@ -2,6 +2,13 @@ body {
     background-color: #DBECF4;
 }
 
+.box-element{
+    box-shadow: hsl(0, 0%, 80%) 0 0 16px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+}
+
 .login-container{
     background: linear-gradient(150deg,#1B394D 33%,#2D9DA7 34%,#2D9DA7 66%,#EC5F20 67%);
     font-family: 'Raleway', sans-serif;

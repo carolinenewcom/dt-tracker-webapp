@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import LoginForm
 from .models import Child
+from django.db.models import Q
 
 
 import datetime
@@ -14,13 +15,15 @@ from django.urls import reverse
 from django.contrib import auth, messages 
 
 def caseload(request):
-    return render(request, 'caseload/caseload.html')
+    all_children = Child.objects.all
+    return render(request, 'caseload/caseload.html', {'all':all_children})
 
 def schedule(request):
     return render(request, 'caseload/schedule.html')
 
 def sessions(request):
-    return render(request, 'caseload/sessions.html')
+    all_children = Child.objects.all
+    return render(request, 'caseload/sessions.html', {'all':all_children})
 
 def attendance(request):
     return render(request, 'caseload/attendance.html')
@@ -28,9 +31,10 @@ def attendance(request):
 def search_caseload(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        #child = Child.objects.filter(id__contains=searched)
-
-        return render(request, 'caseload/search_caseload.html', {'searched': searched}) #{'child': child})
+        child = Child.objects.filter(
+            Q(first_name__icontains=searched) | Q(last_name__icontains=searched)
+            )
+        return render(request, 'caseload/search_caseload.html', {'searched': searched, 'child': child})
     else:
         return render(request, 'caseload/search_caseload.html')
 

@@ -2,13 +2,17 @@
 
 {% block content %}
 <center>
-{% if searched %}
-<h1>You searched for {{ searched }}</h1>
+    {% if searched %}
+        <h1>You searched for {{ searched }}</h1>
+        <br/>
+        {% for child in child %}
+        {{ child }} - {{ child.first_name }} {{ child.last_name }} {{ child.id_number }}<br/>
+         {% endfor %}
 
 
-{% else %}
-<h1>You forgot to search</h1>
-{% endif %}
+    {% else %}
+    <h1>You forgot to search</h1>
+    {% endif %}
 
 
 </center>
