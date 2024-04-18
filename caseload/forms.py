@@ -1,6 +1,8 @@
 import datetime
 
 from django import forms
+from django.forms import ModelForm
+from .models import Child
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -9,6 +11,11 @@ class LoginForm(forms.Form):
     username = forms.CharField(max_length=100)
     password = forms.CharField(widget=forms.PasswordInput)
 
+class AddChild(ModelForm):
+    class Meta:
+        model = Child
+        fields = '__all__'
+    
 
 #class AddSession(forms.Form):
     #session_date_log = forms.DateField(help_text="Enter the date of session.")
@@ -22,4 +29,3 @@ class LoginForm(forms.Form):
 
         # Remember to always return the cleaned data.
         #return data
-

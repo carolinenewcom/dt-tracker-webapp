@@ -4,18 +4,8 @@
 
 <body>
 
-  <div class="row">
-    {% for item in all %}
-    <div class="col-lg-4">
-      <div class="box-element">
-        <h4><strong>{{ item.first_name }} {{ item.last_name }}</strong></h4>
-        <h6>{{ item.id_number }}</h6>
-        <hr>
-        <button class='btn btn-outline-secondary add-btn'>Delete</button>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+  <a href="{% url 'new-child' %}"><button class="btn btn-primary" id="add-button">Add Child</button></a>
+
 
   <div class="row">
     {% for item in all %}
@@ -24,7 +14,7 @@
             <div class="card-block">
               <h4><strong>{{ item.first_name }} {{ item.last_name }}</strong></h4>
               <p>Child ID: {{ item.id_number }}</p>
-              <a href="#" class="btn btn-primary">Delete</a><br>
+              <a href="{% url 'delete-child' item.id %}" class="btn btn-primary">Delete</a><br>
             </div>
           </div>
         </div>
@@ -32,155 +22,155 @@
 </div>
 
 
+<div class="py-5">
+  <div class="container">
+    <div class="row hidden-md-up">
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+          <div class="card-block">
+            <h4 class="card-title">Child Name</h4>
+            <p class="card-text">Child Id Number</p>
+            <a href="#" class="btn btn-primary">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+          <div class="card-block">
+            <h4 class="card-title">Child Name</h4>
+            <p class="card-text">Child Id Number</p>
+            <a href="#" class="btn btn-primary">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+          <div class="card-block">
+            <h4 class="card-title">Child Name</h4>
+            <p class="card-text">Child Id Number</p>
+            <a href="#" class="btn btn-primary">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+            <div class="card-block">
+                <h4 class="card-title">Child Name</h4>
+                <p class="card-text">Child Id Number</p>
+                <a href="#" class="btn btn-primary">Delete</a>
+              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="text-align: center;padding: 10px">
+          <div class="card-block">
+            <h4 class="card-title">Child Name</h4>
+            <p class="card-text">Child Id Number</p>
+            <a href="#" class="btn btn-primary">Delete</a>
+          </div>
+        </div>
+      </div>
 
 
 
-    <div class="py-5">
-      <div class="container">
-        <div class="row hidden-md-up">
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-        </div><br>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-              <div class="card-block">
-                <h4 class="card-title">Child Name</h4>
-                <p class="card-text">Child Id Number</p>
-                <a href="#" class="btn btn-primary">Delete</a>
-              </div>
-            </div>
-          </div>
-        </div><br>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-              <div class="card-block">
-                <h4 class="card-title">Child Name</h4>
-                <p class="card-text">Child Id Number</p>
-                <a href="#" class="btn btn-primary">Delete</a>
-              </div>
-            </div>
-          </div>
-        </div><br>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-              <div class="card-block">
-                <h4 class="card-title">Child Name</h4>
-                <p class="card-text">Child Id Number</p>
-                <a href="#" class="btn btn-primary">Delete</a>
-              </div>
-            </div>
-          </div>
-        </div><br>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-                <div class="card-block">
-                    <h4 class="card-title">Child Name</h4>
-                    <p class="card-text">Child Id Number</p>
-                    <a href="#" class="btn btn-primary">Delete</a>
-                  </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card" style="text-align: center;padding: 10px">
-              <div class="card-block">
-                <h4 class="card-title">Child Name</h4>
-                <p class="card-text">Child Id Number</p>
-                <a href="#" class="btn btn-primary">Delete</a>
-              </div>
-            </div>
-          </div>
  
 </body>
 

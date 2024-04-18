@@ -9,5 +9,6 @@ urlpatterns = [
     path('attendance/', views.attendance),
     path('login/', views.login, name='login'),
     path('search_caseload/', views.search_caseload, name='search-caseload'),
-
+    path('new_child/', views.new_child, name='new-child'),
+    path('delete_child/<child_id>', views.delete_child, name='delete-child'),
 ]

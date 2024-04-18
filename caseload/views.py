@@ -1,7 +1,7 @@
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import LoginForm
+from .forms import LoginForm, AddChild
 from .models import Child
 from django.db.models import Q
 
@@ -50,7 +50,24 @@ def login(request):
             messages.error(request, 'Invalid login information. Please try again.')
     return render(request, 'caseload/login.html', {'form': LoginForm})
 
+def new_child(request):
+    form = AddChild()
+    if request.method == "POST":
+        form = AddChild(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    return render(request, 'caseload/new_child.html', {'form': form})
+ 
 
+def delete_child(request, child_id):
+    if request.method == "POST":
+        d_child= Child.objects.get(id=child_id)
+        d_child.delete()
+        return redirect('/')
+    dele = Child.objects.get(id=child_id)
+    dele.delete()
+    return redirect('/')    
 
 
 #def add_session_log(request, pk):
