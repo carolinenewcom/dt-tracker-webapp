@@ -14,12 +14,17 @@ class Child(models.Model):
    def __str__(self):
       return f'{self.first_name}, {self.last_name}, {self.id_number}'
 
+class Schedule(models.Model):
+   scheduled_week_day = models.CharField(max_length=30)
+   session_time = models.TimeField()
+   child = models.ForeignKey('Child', on_delete=models.CASCADE)
+
+   def __str__(self):
+      return f'{self.child}, {self.scheduled_week_day}, {self.session_time}'
+
 class Session(models.Model):
-   session_id = models.IntegerField()
    child = models.ForeignKey('Child', on_delete=models.CASCADE)
    session_date = models.DateField()
-   session_time = models.TimeField()
-   scheduled_week_day = models.CharField(max_length=30)
    session_attendance = models.CharField(max_length=30)
 
 
