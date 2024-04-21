@@ -2,7 +2,7 @@ import datetime
 
 from django import forms
 from django.forms import ModelForm
-from .models import Child
+from .models import Child, Schedule
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -14,6 +14,11 @@ class LoginForm(forms.Form):
 class AddChild(ModelForm):
     class Meta:
         model = Child
+        fields = '__all__'
+
+class AddSchedule(ModelForm):
+    class Meta:
+        model = Schedule
         fields = '__all__'
     
 

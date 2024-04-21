@@ -1,8 +1,8 @@
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import LoginForm, AddChild
-from .models import Child
+from .forms import LoginForm, AddChild, AddSchedule
+from .models import Child, Schedule
 from django.db.models import Q
 
 
@@ -19,7 +19,8 @@ def caseload(request):
     return render(request, 'caseload/caseload.html', {'all':all_children})
 
 def schedule(request):
-    return render(request, 'caseload/schedule.html')
+    all_schedule = Schedule.objects.all
+    return render(request, 'caseload/schedule.html', {'all_schedule':all_schedule})
 
 def sessions(request):
     all_children = Child.objects.all
@@ -67,7 +68,25 @@ def delete_child(request, child_id):
         return redirect('/')
     dele = Child.objects.get(id=child_id)
     dele.delete()
-    return redirect('/')    
+    return redirect('/')   
+
+def new_schedule(request):
+    form = AddSchedule()
+    if request.method == "POST":
+        form = AddSchedule(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    return render(request, 'caseload/new_schedule.html', {'form': form}) 
+
+def delete_schedule(request, child_id):
+    if request.method == "POST":
+        d_schedule= Schedule.objects.get(id=child_id)
+        d_schedule.delete()
+        return redirect('/')
+    dele = Schedule.objects.get(id=child_id)
+    dele.delete()
+    return redirect('/')  
 
 
 #def add_session_log(request, pk):

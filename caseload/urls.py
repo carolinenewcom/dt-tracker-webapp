@@ -11,4 +11,6 @@ urlpatterns = [
     path('search_caseload/', views.search_caseload, name='search-caseload'),
     path('new_child/', views.new_child, name='new-child'),
     path('delete_child/<child_id>', views.delete_child, name='delete-child'),
+    path('new_schedule/', views.new_schedule, name='new-schedule'),
+    path('delete_schedule/<child_id>', views.delete_schedule, name='delete-schedule'),
 ]
