@@ -1,0 +1,1 @@
+web: gunicorn dttrackerapp.wsgi:application --log-file -

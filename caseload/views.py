@@ -1,16 +1,8 @@
-from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from .forms import LoginForm, AddChild, AddSchedule
-from .models import Child, Schedule
+from .models import Child, Schedule, Session
 from django.db.models import Q
 
-
-import datetime
-
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 
 from django.contrib import auth, messages 
 
@@ -88,31 +80,14 @@ def delete_schedule(request, child_id):
     dele.delete()
     return redirect('/')  
 
+def attendance_report(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        sessions = Session.objects.filter(
+            Q(session_date__icontains=searched)
+            )
+        return render(request, 'caseload/attendance_report.html', {'searched': searched, 'sessions': sessions})
+    else:
+        return render(request, 'caseload/attendance_report.html')
 
-#def add_session_log(request, pk):
-    #session_instance = get_object_or_404(SessionInstance, pk=pk)
-
-    # If this is a POST request then process the Form data
-    #if request.method == 'POST':
-
-        # Create a form instance and populate it with data from the request (binding):
-        #form = AddSession(request.POST)
-
-        # Check if the form is valid:
-        #if form.is_valid():
-            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-            #session_instance.session_date = form.cleaned_data['session_date_log']
-            #session_instance.save()
-
-            # redirect to a new URL:
-            #return HttpResponseRedirect(reverse('session log entered'))
-
-    # If this is a GET (or any other method) create the default form.
-    #else:
-        #context = {
-        #'form': form,
-        #'session_instance': session_instance,
-    #}
-
-   # return render(request, 'caseload/sessions.html', context) 
 
