@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 import django_heroku
-import dj_database_url
 from pathlib import Path
 
 
@@ -28,7 +27,7 @@ SECRET_KEY = 'django-insecure-e*-=#li2wb1wp+bk6^swi#o9z0(6cq(_@qiyrv8vf2*$a(93e1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dttracker.herokuapp.com']
 
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
@@ -86,9 +85,12 @@ WSGI_APPLICATION = 'dttrackerapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dttrackerdb',
-        'USER': 'cnewcom',
-        'PASSWORD': 'maryville',
+        'NAME': 'd3klevv4gggkql',
+        'USER': 'ubich91othnav0',
+        'PASSWORD': 'p57115a6a3d1e872d2badb2bc92ed8a045213ef807edf97e62b516b2d6e9b8799',
+        'HOST': 'c2fdaem59i7d3.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
+
     }
 }
 
@@ -136,8 +138,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+django_heroku.settings(locals())
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_heroku.settings(locals())
+
