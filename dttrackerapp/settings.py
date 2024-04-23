@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-e*-=#li2wb1wp+bk6^swi#o9z0(6cq(_@qiyrv8vf2*$a(93e1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dttracker.herokuapp.com']
+ALLOWED_HOSTS = ['dt-tracker.herokuapp.com']
 
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
