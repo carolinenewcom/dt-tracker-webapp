@@ -14,4 +14,5 @@ urlpatterns = [
     path('new_schedule/', views.new_schedule, name='new-schedule'),
     path('delete_schedule/<child_id>', views.delete_schedule, name='delete-schedule'),
     path('attendance_report/', views.attendance_report, name='attendance-report'),
+    path('new_session_log/', views.new_session_log, name='new-session-log'),
 ]

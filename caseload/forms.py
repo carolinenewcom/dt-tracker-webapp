@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Child, Schedule
+from .models import Child, Schedule, Session
 
 from django.utils.translation import gettext_lazy as _
 
@@ -16,5 +16,10 @@ class AddChild(ModelForm):
 class AddSchedule(ModelForm):
     class Meta:
         model = Schedule
+        fields = '__all__'
+
+class NewSessionLog(ModelForm):
+    class Meta:
+        model = Session
         fields = '__all__'
     

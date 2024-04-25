@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import LoginForm, AddChild, AddSchedule
+from .forms import LoginForm, AddChild, AddSchedule, NewSessionLog
 from .models import Child, Schedule, Session
 from django.db.models import Q
 
@@ -89,5 +89,14 @@ def attendance_report(request):
         return render(request, 'caseload/attendance_report.html', {'searched': searched, 'sessions': sessions})
     else:
         return render(request, 'caseload/attendance_report.html')
+    
+def new_session_log(request):
+    form = NewSessionLog()
+    if request.method == "POST":
+        form = NewSessionLog(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'caseload/sessions.html')
+    return render(request, 'caseload/new_session_log.html', {'form': form}) 
 
 
