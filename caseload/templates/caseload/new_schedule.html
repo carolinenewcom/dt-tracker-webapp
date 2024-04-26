@@ -2,13 +2,26 @@
 
 {% block content %}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form}}
-
-    <input type="submit" name="Submit">
-</form>
-
-
+<div class="container">
+    <h1>Add Session to Schedule</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+    <div class="form-group">
+        <p>Enter the week day of scheduled session:</p>
+        {{ form.scheduled_week_day }}
+    </div>
+    <div class="form-group">
+        <p>Enter the time session is scheduled for:</p>
+        {{ form.session_time }}
+    </div>
+    <div class="form-group">
+        <p>Select the child for this scheduled session:</p>
+        {{ form.child }}
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+    </form>
+</div>
 
 {% endblock %}

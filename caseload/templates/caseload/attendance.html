@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h1>Attendance</h1>
+
 <form action="{% url 'attendance-report' %}" method=POST>
     {% csrf_token %}
     <input type="text" name="searched" placeholder="Enter YYYY-MM-DD">
