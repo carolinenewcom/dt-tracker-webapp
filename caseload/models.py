@@ -27,4 +27,24 @@ class Session(models.Model):
    session_date = models.DateField()
    session_attendance = models.CharField(max_length=30)
 
+   def __str__(self):
+      return f'{self.child}, {self.session_date}, {self.session_attendance}'
+   
+class SessionAttendance(models.Model):
+   child = models.ForeignKey('Child', on_delete=models.CASCADE)
+   month = models.CharField(max_length=30)
+   sessions_completed = models.IntegerField()
+   excused_absence = models.IntegerField()
+   unexcused_absence = models.IntegerField()
+   search_fields = ['month', 'child__first_name', 'child__last_name', 'child__id_number']
+
+   def __str__(self):
+      return f'{self.child}, {self.month}, {self.sessions_completed}, {self.excused_absence}, {self.unexcused_absence}'
+   
+   @property
+   def get_percentage(self):
+      total_count = self.sessions_completed + self.excused_absence + self.unexcused_absence
+      perc = self.sessions_completed * 100 / total_count
+      return perc
+
 

@@ -1,0 +1,45 @@
+{% extends 'caseload/main.html' %}
+
+{% block content %}
+<center>
+
+    <div class="row">
+        {% for attendance_data in attendance_data %}
+            <div class="col-md-4">
+              <div class="card" style="text-align: center;padding: 20px">
+                <div class="card-block">
+                  <p>Attendance Percentage: {{ attendance_data.get_percentage }}%</p>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class='row mt-3 pt-3'>
+        <div class= 'col-md-8'>
+            <canvas id="myChart"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                const ctx = document.getElementById('myChart');
+              
+                new Chart(ctx, {
+                  type: 'bar',
+                  data: {
+                    labels: ['completed', 'excused', 'unexcused'],
+                    datasets: [{
+                      label: [{% for attendance_data in attendance_data %}'{{ attendance_data.child.first_name }}', {% endfor %}],
+                      data: [{% for attendance_data in attendance_data %}'{{ attendance_data.sessions_completed }}', '{{ attendance_data.excused_absence }}', '{{ attendance_data.unexcused_absence }}'{% endfor %}],
+                      borderWidth: 1
+                    }]
+                  },
+                });
+              </script>
+    
+        </div>
+    </div>
+
+
+</center>
+
+
+{% endblock %}

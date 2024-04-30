@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import LoginForm, AddChild, AddSchedule, NewSessionLog
-from .models import Child, Schedule, Session
+from .models import Child, Schedule, Session, SessionAttendance
 from django.db.models import Q
 
 
@@ -19,7 +19,12 @@ def sessions(request):
     return render(request, 'caseload/sessions.html', {'all':all_children})
 
 def attendance(request):
-    return render(request, 'caseload/attendance.html')
+    attendance = Session.objects.all
+    return render(request, 'caseload/attendance.html', {'attendance':attendance})
+
+def percentage_report(request):
+    attendance_data = SessionAttendance.objects.all
+    return render(request, 'caseload/percentage_report.html', {'attendance_data':attendance_data})
 
 def search_caseload(request):
     if request.method == "POST":
@@ -30,6 +35,17 @@ def search_caseload(request):
         return render(request, 'caseload/search_caseload.html', {'searched': searched, 'child': child})
     else:
         return render(request, 'caseload/search_caseload.html')
+    
+def search_percentage_report(request):
+    if request.method == "POST":
+        search = request.POST['search']
+        data = SessionAttendance.objects.filter(
+            Q(month__icontains=search)| Q(child__first_name__icontains=search) | Q(child__last_name__icontains=search) | Q(child__id_number__icontains=search)
+            )
+        return render(request, 'caseload/search_percentage_report.html', {'search': search, 'data': data})
+    else:
+        return render(request, 'caseload/search_percentage_report.html')
+    
 
 def login(request):
     if request.method == "POST":
@@ -80,15 +96,7 @@ def delete_schedule(request, child_id):
     dele.delete()
     return redirect('/')  
 
-def attendance_report(request):
-    if request.method == "POST":
-        searched = request.POST['searched']
-        sessions = Session.objects.filter(
-            Q(session_date__icontains=searched)
-            )
-        return render(request, 'caseload/attendance_report.html', {'searched': searched, 'sessions': sessions})
-    else:
-        return render(request, 'caseload/attendance_report.html')
+
     
 def new_session_log(request):
     form = NewSessionLog()

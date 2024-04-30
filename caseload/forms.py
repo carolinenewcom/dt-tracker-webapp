@@ -59,8 +59,25 @@ class AddSchedule(ModelForm):
                 })
         }
 
+    
 class NewSessionLog(ModelForm):
     class Meta:
         model = Session
         fields = '__all__'
-    
+        labels = {
+            'child': '',
+            'session_date': '',
+            'session_attendance': '',
+        }
+        widgets = {
+            'session_date': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                'placeholder': 'YYYY-MM-DD'
+                }),
+            'session_attendance': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                'placeholder': 'Attendance Outcome'
+                })
+        }

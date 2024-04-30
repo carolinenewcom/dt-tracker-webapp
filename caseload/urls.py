@@ -13,6 +13,7 @@ urlpatterns = [
     path('delete_child/<child_id>', views.delete_child, name='delete-child'),
     path('new_schedule/', views.new_schedule, name='new-schedule'),
     path('delete_schedule/<child_id>', views.delete_schedule, name='delete-schedule'),
-    path('attendance_report/', views.attendance_report, name='attendance-report'),
     path('new_session_log/', views.new_session_log, name='new-session-log'),
+    path('percentage_report/', views.percentage_report, name='percentage-report'),
+    path('search_percentage_report/', views.search_percentage_report, name='search-percentage-report'),
 ]
