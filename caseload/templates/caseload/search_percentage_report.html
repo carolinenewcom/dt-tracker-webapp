@@ -9,37 +9,40 @@
         <div class="col-md-4">
           <div class="card" style="text-align: center;padding: 20px">
             <div class="card-block">
-              <p>Attendance Percentage: {{ data.get_percentage }}%</p>
+                <h4><strong>{{ data.child.first_name }} {{ data.child.last_name }}</strong></h4>
+                <p>Month: {{ data.month }}</p>
+                <p>Attendance Percentage: {{ data.get_percentage }}%</p>
             </div>
           </div>
         </div>
-    {% endfor %}
 </div>
 
+
     <div class='row mt-3 pt-3'>
-        <div class= 'col-md-8'>
-            <canvas id="myChart"></canvas>
+        <div class= 'col-md-9'>
+            <div class='card'>
+            <div><canvas id="myChart{{ forloop.counter }}"></canvas></div>
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
             <script>
-                const ctx = document.getElementById('myChart');
-              
+
+                var ctx = document.getElementById('myChart{{ forloop.counter }}');
                 new Chart(ctx, {
                   type: 'bar',
                   data: {
-                    labels: ['completed', 'excused', 'unexcused'],
+                    labels: ['completed sessions', 'excused absences', 'unexcused absences'],
                     datasets: [{
-                      label: [{% for data in data %}'{{ search.data.child.first_name }}', 'Attendance Report' {% endfor %}],
-                      data: [{% for data in data %}'{{ data.sessions_completed }}', '{{ data.excused_absence }}', '{{ data.unexcused_absence }}'{% endfor %}],
+                        label: ['{{ data.month }}',],
+                        data: ['{{ data.sessions_completed }}', '{{ data.excused_absence }}', '{{ data.unexcused_absence }}'],
                       borderWidth: 1
                     }]
                   },
                 });
               </script>
-    
+            </div>
         </div>
+    {% endfor %}
     </div>
 {% endif %}
-
 
 
 </center>

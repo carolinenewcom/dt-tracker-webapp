@@ -27,7 +27,7 @@
                   data: {
                     labels: ['completed', 'excused', 'unexcused'],
                     datasets: [{
-                      label: [{% for attendance_data in attendance_data %}'{{ attendance_data.child.first_name }}', {% endfor %}],
+                      label: [{% for attendance_data in attendance_data %}'{{ attendance_data.month }}', 'Attendance Report' {% endfor %}],
                       data: [{% for attendance_data in attendance_data %}'{{ attendance_data.sessions_completed }}', '{{ attendance_data.excused_absence }}', '{{ attendance_data.unexcused_absence }}'{% endfor %}],
                       borderWidth: 1
                     }]

@@ -12,12 +12,20 @@
             {{ form.child }}
         </div>
     <div class="form-group">
-        <p>Enter the date for this session:</p>
-        {{ form.session_date }}
+        <p>Enter the month:</p>
+        {{ form.month}}
     </div>
     <div class="form-group">
-        <p>Enter session outcome as 'completed', 'excused', or 'unexcused':</p>
-        {{ form.session_attendance }}
+        <p>Enter the number of completed sessions for the month:</p>
+        {{ form.sessions_completed }}
+    </div>
+    <div class="form-group">
+        <p>Enter the number of excused absences for the month:</p>
+        {{ form.excused_absence }}
+    </div>
+    <div class="form-group">
+        <p>Enter the number of unexcused absences for the month:</p>
+        {{ form.unexcused_absence }}
     </div>
     <div class="form-group">
         <input class="btn btn-primary" type="submit" value="Submit">

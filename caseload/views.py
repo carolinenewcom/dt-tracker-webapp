@@ -45,7 +45,7 @@ def search_percentage_report(request):
         return render(request, 'caseload/search_percentage_report.html', {'search': search, 'data': data})
     else:
         return render(request, 'caseload/search_percentage_report.html')
-    
+
 
 def login(request):
     if request.method == "POST":

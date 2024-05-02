@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm, TextInput
-from .models import Child, Schedule, Session
+from .models import Child, Schedule, SessionAttendance
 
 from django.utils.translation import gettext_lazy as _
 
@@ -59,10 +59,10 @@ class AddSchedule(ModelForm):
                 })
         }
 
-    
+
 class NewSessionLog(ModelForm):
     class Meta:
-        model = Session
+        model = SessionAttendance
         fields = '__all__'
         labels = {
             'child': '',
@@ -70,14 +70,24 @@ class NewSessionLog(ModelForm):
             'session_attendance': '',
         }
         widgets = {
-            'session_date': TextInput(attrs={
+            'month': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': 'YYYY-MM-DD'
+                'placeholder': ''
                 }),
-            'session_attendance': TextInput(attrs={
+            'sessions_completed': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': 'Attendance Outcome'
+                'placeholder': ''
+                }),
+            'excused_absence': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                'placeholder': ''
+                }),
+            'unexcused_absence': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                'placeholder': ''
                 })
         }
