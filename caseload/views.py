@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import LoginForm, AddChild, AddSchedule, NewSessionLog
-from .models import Child, Schedule, Session, SessionAttendance
+from .models import Child, Schedule, SessionAttendance
 from django.db.models import Q
-
+from django.contrib import messages
 
 from django.contrib import auth, messages 
 
@@ -19,12 +19,18 @@ def sessions(request):
     return render(request, 'caseload/sessions.html', {'all':all_children})
 
 def attendance(request):
-    attendance = Session.objects.all
+    attendance = SessionAttendance.objects.all
     return render(request, 'caseload/attendance.html', {'attendance':attendance})
 
 def percentage_report(request):
-    attendance_data = SessionAttendance.objects.all
-    return render(request, 'caseload/percentage_report.html', {'attendance_data':attendance_data})
+    if request.method == "POST":
+        search = request.POST['search']
+        data = SessionAttendance.objects.filter(
+            Q(month__icontains=search)
+            ).order_by('child__first_name')
+        return render(request, 'caseload/percentage_report.html', {'search': search, 'data': data})
+    else:
+        return render(request, 'caseload/percentage_report.html')
 
 def search_caseload(request):
     if request.method == "POST":
@@ -36,11 +42,21 @@ def search_caseload(request):
     else:
         return render(request, 'caseload/search_caseload.html')
     
+def search_sessions(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        sessionLogs = SessionAttendance.objects.filter(
+            Q(child__first_name__icontains=searched) | Q(child__last_name__icontains=searched) | Q(child__id_number__icontains=searched)
+            )
+        return render(request, 'caseload/search_sessions.html', {'searched': searched, 'sessionLogs': sessionLogs})
+    else:
+        return redirect(request, 'caseload/search_sessions.html')
+    
 def search_percentage_report(request):
     if request.method == "POST":
         search = request.POST['search']
         data = SessionAttendance.objects.filter(
-            Q(month__icontains=search)| Q(child__first_name__icontains=search) | Q(child__last_name__icontains=search) | Q(child__id_number__icontains=search)
+            Q(child__first_name__icontains=search) | Q(child__last_name__icontains=search) | Q(child__id_number__icontains=search)
             )
         return render(request, 'caseload/search_percentage_report.html', {'search': search, 'data': data})
     else:
@@ -56,7 +72,7 @@ def login(request):
             auth.login(request, user)
             return redirect('/')
         else:
-            messages.error(request, 'Invalid login information. Please try again.')
+            messages.info(request, 'Invalid login information. Please try again.')
     return render(request, 'caseload/login.html', {'form': LoginForm})
 
 def new_child(request):

@@ -16,4 +16,5 @@ urlpatterns = [
     path('new_session_log/', views.new_session_log, name='new-session-log'),
     path('percentage_report/', views.percentage_report, name='percentage-report'),
     path('search_percentage_report/', views.search_percentage_report, name='search-percentage-report'),
+    path('search_sessions/', views.search_sessions, name='search-sessions'),
 ]

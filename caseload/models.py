@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class User(models.Model):
    user_id = models.IntegerField()
    user_name = models.CharField(max_length=30)
@@ -46,5 +47,6 @@ class SessionAttendance(models.Model):
       total_count = self.sessions_completed + self.excused_absence + self.unexcused_absence
       perc = self.sessions_completed * 100 / total_count
       return perc
+   
 
 

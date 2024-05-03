@@ -4,14 +4,17 @@
 
 <h1>Sessions</h1>
 
-<form action="{% url 'search-caseload' %}" method=POST>
+<h6>At the end of each month, Developmental Therapists are required to input attendance information regarding their monthly sessions for each child on their caseload.</h6>
+
+<p>To view a child's past monthly session logs, enter a child's first name, last name, or ID number.</p>
+<form action="{% url 'search-sessions' %}" method=POST>
     {% csrf_token %}
-    <input type="text" name="searched" placeholder="Enter First or Last Name">
+    <input type="text" name="searched" placeholder="Search by child">
     <button class="btn" type="submit">Search</button>
 </form>
 
+<p>To enter a new monthly session log, select the 'Add Session Log' button below.</p>
 <a href="{% url 'new-session-log' %}"><button class="btn btn-primary" id="add-button">Add Session Log</button></a>
-
 
 
 {% endblock %}

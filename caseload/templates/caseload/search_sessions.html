@@ -1,0 +1,31 @@
+{% extends 'caseload/main.html' %}
+
+{% block content %}
+<h1>Session Logs</h1>
+<center>
+    {% if searched %}         
+         <div class="row">
+         {% for sessionLogs in sessionLogs %}
+             <div class="col-md-4">
+               <div class="card" style="text-align: center;padding: 15px">
+                 <div class="card-block">
+                   <h4><strong>{{ sessionLogs.child.first_name }} {{ sessionLogs.child.last_name }}</strong></h4>
+                   <p><strong>{{ sessionLogs.month }}</strong></p>
+                   <p>Completed Sessions: {{ sessionLogs.sessions_completed }}</p>
+                   <p>Excused Absences: {{ sessionLogs.excused_absence }}</p>
+                   <p>Unexcused Absences: {{ sessionLogs.unexcused_absence }}</p>
+                 </div>
+               </div>
+             </div>
+         {% endfor %}
+       </div>
+
+    {% else %}
+    <h1>You forgot to search</h1>
+    {% endif %}
+
+
+</center>
+
+
+{% endblock %}

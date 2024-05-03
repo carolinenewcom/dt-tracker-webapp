@@ -4,17 +4,21 @@
 
 <h1>Attendance</h1>
 
+<h6>Developmental Therapy is a program to help parents support their children in the developmental milestones they are delayed in. Funding for Developmental Therapy is contingent upon maintaining a 75% or higher attendance rate. If a family consistently falls below a 75% attendance rate, they are subject to program dismissal. In order to ensure that families are secure in their program standing, it is crucial to track attendance percentages.</h6>
+
+
+<p>To view total caseload attendance reports by month, enter month of desired report.</p>
 <form action="{% url 'percentage-report' %}" method=POST>
     {% csrf_token %}
-    <input type="text" name="search" placeholder="search">
-    <button class="btn" type="submit">Search</button>
+    <input type="text" name="search" placeholder="Search by month">
+    <button class="btn btn-primary" type="submit">Search</button>
 </form>
 
-
+<p>To view all attendance reports for a child, enter child's first name, last name, or ID number.</p>
 <form action="{% url 'search-percentage-report' %}" method=POST>
     {% csrf_token %}
-    <input type="text" name="search" placeholder="search">
-    <button class="btn" type="submit">Search</button>
+    <input type="text" name="search" placeholder="Search by child">
+    <button class="btn btn-primary" type="submit">Search</button>
 </form>
 
 
