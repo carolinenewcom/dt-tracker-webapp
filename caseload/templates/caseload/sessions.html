@@ -2,20 +2,27 @@
 
 {% block content %}
 
-<h1>Sessions</h1>
+<div class="sessionsh"><h1>Sessions</h1></div>
 
-<h6>At the end of each month, Developmental Therapists are required to input attendance information regarding their monthly sessions for each child on their caseload.</h6>
+<center>
+<div class='sessioncard'>
+    <h5>At the end of each month, Developmental Therapists are required to input attendance information regarding their monthly sessions for each child on their caseload. For each month, Developmental Therapists will total their number of completed sessions, excused absences, and unexcused absences. This data will be used to determine attendance percentages.</h5>
+</div>
+</center>
 
-<p>To view a child's past monthly session logs, enter a child's first name, last name, or ID number.</p>
+<div class='sessioncard2'>
+    <p>To view a child's past monthly session logs, enter a child's first name, last name, or ID number.</p>
 <form action="{% url 'search-sessions' %}" method=POST>
     {% csrf_token %}
-    <input type="text" name="searched" placeholder="Search by child">
+    <input type="text" name="searched" placeholder="Search by Child">
     <button class="btn" type="submit">Search</button>
 </form>
+</div>
 
-<p>To enter a new monthly session log, select the 'Add Session Log' button below.</p>
-<a href="{% url 'new-session-log' %}"><button class="btn btn-primary" id="add-button">Add Session Log</button></a>
-
+<div class='sessioncard3'>
+    <p>To enter a new monthly session log, select the 'Add Session Log' button below.</p>
+    <a href="{% url 'new-session-log' %}"><button class="btn btn-primary" id="add-button">Add Session Log</button></a>
+</div>
 
 {% endblock %}
 

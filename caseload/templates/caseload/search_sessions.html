@@ -1,12 +1,14 @@
 {% extends 'caseload/main.html' %}
 
 {% block content %}
-<h1>Session Logs</h1>
+
+<div class="sessionlogsh"><h1>Session Logs</h1></div>
+
 <center>
     {% if searched %}         
          <div class="row">
          {% for sessionLogs in sessionLogs %}
-             <div class="col-md-4">
+             <div class="col-md-3">
                <div class="card" style="text-align: center;padding: 15px">
                  <div class="card-block">
                    <h4><strong>{{ sessionLogs.child.first_name }} {{ sessionLogs.child.last_name }}</strong></h4>

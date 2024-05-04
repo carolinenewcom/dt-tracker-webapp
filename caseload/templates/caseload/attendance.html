@@ -2,24 +2,31 @@
 
 {% block content %}
 
-<h1>Attendance</h1>
+<div class="attendanceh"><h1>Attendance</h1></div>
 
-<h6>Developmental Therapy is a program to help parents support their children in the developmental milestones they are delayed in. Funding for Developmental Therapy is contingent upon maintaining a 75% or higher attendance rate. If a family consistently falls below a 75% attendance rate, they are subject to program dismissal. In order to ensure that families are secure in their program standing, it is crucial to track attendance percentages.</h6>
+<center>
+    <div class='attendancecard'>
+        <h5>Developmental Therapy is a program to help parents support their children in the developmental milestones they are delayed in. Funding for Developmental Therapy is contingent upon maintaining a 75% or higher attendance rate. If a family consistently falls below a 75% attendance rate, they are subject to program dismissal. In order to ensure that families are secure in their program standing, it is crucial to track attendance percentages.</h5>
+    </div>
+</center>
 
-
-<p>To view total caseload attendance reports by month, enter month of desired report.</p>
+<div class='attendancecard2'>
+    <p>To view total caseload attendance reports by month, enter month of desired report.</p>
 <form action="{% url 'percentage-report' %}" method=POST>
     {% csrf_token %}
-    <input type="text" name="search" placeholder="Search by month">
+    <input type="text" name="search" placeholder="Search by Month">
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
+</div>
 
-<p>To view all attendance reports for a child, enter child's first name, last name, or ID number.</p>
+<div class='attendancecard3'>
+    <p>To view all attendance reports for a child, enter child's first name, last name, or ID number.</p>
 <form action="{% url 'search-percentage-report' %}" method=POST>
     {% csrf_token %}
-    <input type="text" name="search" placeholder="Search by child">
+    <input type="text" name="search" placeholder="Search by Child">
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
+</div>
 
 
 

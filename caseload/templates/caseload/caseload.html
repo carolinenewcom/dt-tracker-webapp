@@ -4,8 +4,9 @@
 
 <body>
 
-  <h1>Caseload</h1>
-  <a href="{% url 'new-child' %}"><button class="btn btn-primary" id="add-button">Add Child</button></a>
+  <div class="caseloadh"><h1>Caseload</h1></div>
+
+  <div class="addchild"><a href="{% url 'new-child' %}"><button class="btn" id="add-button">Add Child</button></a></div>
 
   <div class="row">
     {% for item in all %}

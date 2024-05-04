@@ -3,13 +3,13 @@
 {% block content %}
 <center>
 
-<h1>Caseload Attendance Report</h1>
+<div class="caseloadreporth"><h1>Caseload Attendance Reports by Month</h1></div>
 
 {% if search %}
 <div class="row">
     {% for data in data %}
         <div class="col-md-4">
-          <div class="card" style="text-align: center;padding: 20px">
+          <div class="card" style="text-align: center; padding: 20px">
             <div class="card-block">
                 <h4><strong>{{ data.child.first_name }} {{ data.child.last_name }}</strong></h4>
                 <p>Month: {{ data.month }}</p>
@@ -40,7 +40,7 @@
                   },
                 });
               </script>
-            </div>
+            </div><hr>
         </div>
     {% endfor %}
     </div>
