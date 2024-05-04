@@ -17,4 +17,5 @@ urlpatterns = [
     path('percentage_report/', views.percentage_report, name='percentage-report'),
     path('search_percentage_report/', views.search_percentage_report, name='search-percentage-report'),
     path('search_sessions/', views.search_sessions, name='search-sessions'),
+    path('delete_session_log/<child_id>', views.delete_session_log, name='delete-session-log'),
 ]

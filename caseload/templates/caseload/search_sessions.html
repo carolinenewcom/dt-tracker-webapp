@@ -16,6 +16,7 @@
                    <p>Completed Sessions: {{ sessionLogs.sessions_completed }}</p>
                    <p>Excused Absences: {{ sessionLogs.excused_absence }}</p>
                    <p>Unexcused Absences: {{ sessionLogs.unexcused_absence }}</p>
+                   <a href="{% url 'delete-session-log' sessionLogs.id %}" class="btn btn-primary">Delete</a><br>
                  </div>
                </div>
              </div>

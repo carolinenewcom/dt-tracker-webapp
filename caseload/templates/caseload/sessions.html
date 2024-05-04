@@ -14,11 +14,20 @@
 
 <div class='sessioncard2'>
     <p>To view a child's past monthly session logs, enter a child's first name, last name, or ID number.</p>
-<form action="{% url 'search-sessions' %}" method=POST>
+<form action="{% url 'search-sessions' %}" id='sessionlogform' method=POST>
     {% csrf_token %}
     <input type="text" name="searched" placeholder="Search by Child">
     <button class="btn" type="submit">Search</button>
 </form>
+<button onclick="clearInputField()">
+    Clear
+</button>
+
+<script>
+    function clearInputField() {
+        document.getElementById('sessionlogform').reset();
+    }
+</script>
 </div>
 
 <div class='sessioncard3'>

@@ -12,20 +12,30 @@
 
 <div class='attendancecard2'>
     <p>To view total caseload attendance reports by month, enter month of desired report.</p>
-<form action="{% url 'percentage-report' %}" method=POST>
+<form action="{% url 'percentage-report' %}" id='caseloadpercentform' method=POST>
     {% csrf_token %}
-    <input type="text" name="search" placeholder="Search by Month">
+    <input type="text" name="search" placeholder="Search by Month" id='myInput'>
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
+<button onclick="document.getElementById('myInput').value = ''">Clear</button>
 </div>
 
 <div class='attendancecard3'>
     <p>To view all attendance reports for a child, enter child's first name, last name, or ID number.</p>
-<form action="{% url 'search-percentage-report' %}" method=POST>
+<form action="{% url 'search-percentage-report' %}" id='childpercentform' method=POST>
     {% csrf_token %}
     <input type="text" name="search" placeholder="Search by Child">
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
+<button onclick="clearInputField()">
+    Clear
+</button>
+
+<script>
+    function clearInputField() {
+        document.getElementById('childpercentform').reset();
+    }
+</script>
 </div>
 
 

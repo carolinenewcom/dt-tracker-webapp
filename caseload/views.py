@@ -117,8 +117,17 @@ def delete_schedule(request, child_id):
     messages.success(request, 'Session Has Successfully Been Deleted From Your Schedule!')
     return redirect('/')  
 
+def delete_session_log(request, child_id):
+    if request.method == "POST":
+        d_schedule= SessionAttendance.objects.get(id=child_id)
+        d_schedule.delete()
+        return redirect('/')
+    dele = SessionAttendance.objects.get(id=child_id)
+    dele.delete()
+    messages.success(request, 'Session Log Has Successfully Been Deleted!')
+    return render(request, 'caseload/sessions.html')  
 
-    
+
 def new_session_log(request):
     form = NewSessionLog()
     if request.method == "POST":
