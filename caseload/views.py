@@ -50,6 +50,7 @@ def search_sessions(request):
             )
         return render(request, 'caseload/search_sessions.html', {'searched': searched, 'sessionLogs': sessionLogs})
     else:
+        messages.success(request, 'Information entered was invalid. Please try again.')
         return redirect(request, 'caseload/search_sessions.html')
     
 def search_percentage_report(request):
