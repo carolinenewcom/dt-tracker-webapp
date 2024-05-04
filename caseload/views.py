@@ -81,7 +81,8 @@ def new_child(request):
         form = AddChild(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+        messages.success(request, 'Child Has Successfully Been Added To Your Caseload!')
+        return redirect('/')
     return render(request, 'caseload/new_child.html', {'form': form})
  
 
@@ -92,6 +93,7 @@ def delete_child(request, child_id):
         return redirect('/')
     dele = Child.objects.get(id=child_id)
     dele.delete()
+    messages.success(request, 'Child Has Successfully Been Deleted From Your Caseload!')
     return redirect('/')   
 
 def new_schedule(request):
@@ -100,7 +102,8 @@ def new_schedule(request):
         form = AddSchedule(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+        messages.success(request, 'Session Has Successfully Been Added To Your Schedule!')
+        return redirect('/')
     return render(request, 'caseload/new_schedule.html', {'form': form}) 
 
 def delete_schedule(request, child_id):
@@ -110,6 +113,7 @@ def delete_schedule(request, child_id):
         return redirect('/')
     dele = Schedule.objects.get(id=child_id)
     dele.delete()
+    messages.success(request, 'Session Has Successfully Been Deleted From Your Schedule!')
     return redirect('/')  
 
 
@@ -120,6 +124,7 @@ def new_session_log(request):
         form = NewSessionLog(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Session Log Has Successfully Been Added!')
             return render(request, 'caseload/sessions.html')
     return render(request, 'caseload/new_session_log.html', {'form': form}) 
 

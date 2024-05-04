@@ -78,16 +78,25 @@ class NewSessionLog(ModelForm):
             'sessions_completed': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': ''
+                'placeholder': '',
+                'min':0,
+                'max':5,
+                'type': 'number'
                 }),
             'excused_absence': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': ''
+                'placeholder': '',
+                'min':0,
+                'max':5,
+                'type': 'number'
                 }),
             'unexcused_absence': TextInput(attrs={
                 'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': ''
+                'placeholder': '',
+                'min':0,
+                'max':5,
+                'type': 'number'
                 })
         }
